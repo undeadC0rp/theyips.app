@@ -1,13 +1,10 @@
 ---
-// Drop PNG/JPG files into public/screenshots/ and update this list.
-// Recommended: export from Android Studio emulator (camera icon in toolbar)
-// or run: adb exec-out screencap -p > public/screenshots/<name>.png
 const screens = [
-  { file: 'home.png',        label: 'Home & career stats' },
-  { file: 'round.png',       label: 'Hole-by-hole entry' },
-  { file: 'strokes-gained.png', label: 'Strokes gained' },
-  { file: 'bag.png',         label: 'Bag performance' },
-  { file: 'round-detail.png',label: 'Round detail' },
+  { file: 'home.png',           label: 'Home & career stats',  type: 'img'   },
+  { file: 'round.webm',         label: 'Hole-by-hole entry',   type: 'video' },
+  { file: 'strokes-gained.png', label: 'Strokes gained',       type: 'img'   },
+  { file: 'bag.png',            label: 'Bag performance',      type: 'img'   },
+  { file: 'stats-trends.webm',  label: 'Stats & trends',       type: 'video' },
 ];
 ---
 
@@ -19,14 +16,27 @@ const screens = [
       {screens.map(s => (
         <div class="frame">
           <div class="screen">
-            <img
-              src={`/screenshots/${s.file}`}
-              alt={s.label}
-              width="220"
-              height="440"
-              class="shot"
-              onerror="this.parentElement.classList.add('empty')"
-            />
+            {s.type === 'video' ? (
+              <video
+                src={`/screenshots/${s.file}`}
+                autoplay
+                muted
+                loop
+                playsinline
+                class="shot"
+                width="220"
+                height="440"
+              />
+            ) : (
+              <img
+                src={`/screenshots/${s.file}`}
+                alt={s.label}
+                width="220"
+                height="440"
+                class="shot"
+                onerror="this.parentElement.classList.add('empty')"
+              />
+            )}
             <div class="empty-label">coming soon</div>
           </div>
           <p class="caption">{s.label}</p>
