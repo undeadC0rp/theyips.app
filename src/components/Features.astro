@@ -1,0 +1,96 @@
+---
+const features = [
+  {
+    title: 'Strokes Gained',
+    body: 'Every shot measured against what\'s expected from that distance and lie. Know exactly where you\'re losing and gaining strokes — driving, approach, short game, and putting.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>`,
+  },
+  {
+    title: 'Shot-by-Shot Tracking',
+    body: 'Log every shot with club, lie, distance, and GPS start/end points. Build a real picture of your game over time — not just a scorecard.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>`,
+  },
+  {
+    title: 'Bag Performance',
+    body: 'See average distances, good/bad shot ratios, and usage stats for every club. Know which clubs earn their spot and which ones are costing you.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>`,
+  },
+  {
+    title: 'Putting & Driving Trends',
+    body: 'Dedicated trend screens for your two biggest scoring drivers. Spot patterns across rounds and courses — not just the last round you played.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`,
+  },
+  {
+    title: 'Handicap Tracking',
+    body: 'Handicap differential calculated automatically after every round. Watch your index move as your game improves — or doesn\'t.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+  },
+  {
+    title: 'Your Data, Your Way',
+    body: 'Access everything via the mobile app, REST API, or CLI. No lock-in. No subscription required to export your own numbers.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+  },
+];
+---
+
+<section class="features">
+  <div class="container">
+    <p class="tag">Features</p>
+    <h2>Stats that actually<br /><em>explain your game.</em></h2>
+    <div class="grid">
+      {features.map(f => (
+        <div class="card">
+          <div class="icon" set:html={f.icon} />
+          <h3>{f.title}</h3>
+          <p>{f.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features { padding: 80px 0; border-top: 1px solid var(--border); }
+
+  h2 {
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 56px;
+  }
+
+  h2 em { color: var(--green); font-style: normal; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: var(--surface);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .icon { color: var(--green); flex-shrink: 0; }
+
+  h3 { font-size: 15px; font-weight: 700; color: var(--text); }
+
+  p { font-size: 13.5px; color: var(--muted); line-height: 1.75; }
+</style>

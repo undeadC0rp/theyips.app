@@ -1,0 +1,83 @@
+---
+// Drop PNG/JPG files into public/screenshots/ and update this list.
+// Recommended: export from Android Studio emulator (camera icon in toolbar)
+// or run: adb exec-out screencap -p > public/screenshots/<name>.png
+const screens = [
+  { file: 'home.png',        label: 'Home & career stats' },
+  { file: 'round.png',       label: 'Hole-by-hole entry' },
+  { file: 'strokes-gained.png', label: 'Strokes gained' },
+  { file: 'bag.png',         label: 'Bag performance' },
+  { file: 'round-detail.png',label: 'Round detail' },
+];
+---
+
+<section class="screenshots">
+  <div class="container">
+    <p class="tag">Screenshots</p>
+    <h2>See it in <em>action.</em></h2>
+    <div class="scroll-row">
+      {screens.map(s => (
+        <div class="frame">
+          <div class="screen">
+            <img
+              src={`/screenshots/${s.file}`}
+              alt={s.label}
+              width="220"
+              height="440"
+              class="shot"
+              onerror="this.parentElement.classList.add('empty')"
+            />
+            <div class="empty-label">coming soon</div>
+          </div>
+          <p class="caption">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .screenshots { padding: 80px 0; border-top: 1px solid var(--border); }
+
+  h2 {
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 48px;
+  }
+
+  h2 em { color: var(--green); font-style: normal; }
+
+  .scroll-row {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .frame { flex-shrink: 0; display: flex; flex-direction: column; gap: 12px; }
+
+  .screen {
+    width: 180px;
+    aspect-ratio: 9/18;
+    background: var(--surface2);
+    border: 1.5px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .shot { width: 100%; height: 100%; object-fit: cover; }
+
+  .screen:not(.empty) .empty-label { display: none; }
+  .screen.empty .shot { display: none; }
+  .empty-label { font-size: 10px; color: var(--muted2); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .caption { font-size: 12px; color: var(--muted); text-align: center; }
+</style>

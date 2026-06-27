@@ -1,0 +1,134 @@
+---
+const DOWNLOAD_URL = 'https://github.com/undeadC0rp/theyipsapp-releases/releases/latest';
+---
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <p class="tag">Android · Free</p>
+      <h1>Track it.<br />Face it.<br /><em>Suck less.</em></h1>
+      <p class="sub">
+        A golf stats app built around strokes gained — the methodology that
+        actually explains your game. Not just scores. The shots that cost you,
+        and why.
+      </p>
+      <div class="cta">
+        <a href={DOWNLOAD_URL} class="btn-primary" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download APK
+        </a>
+        <p class="store-note">Google Play coming soon</p>
+      </div>
+    </div>
+
+    <div class="hero-screen">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <img
+            src="/screenshots/home.png"
+            alt="The Yips home screen"
+            width="280"
+            height="560"
+            class="screenshot"
+            onerror="this.parentElement.classList.add('placeholder')"
+          />
+          <div class="placeholder-label">screenshot coming soon</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { padding: 80px 0 72px; }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 64px;
+    align-items: center;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-screen { display: none; }
+  }
+
+  h1 {
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  h1 em { color: var(--green); font-style: normal; }
+
+  .sub {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 440px;
+    margin-bottom: 40px;
+  }
+
+  .cta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--bg);
+    background: var(--green);
+    padding: 14px 24px;
+    border-radius: 8px;
+    transition: opacity 0.15s;
+  }
+
+  .btn-primary:hover { opacity: 0.88; }
+
+  .store-note {
+    font-size: 13px;
+    color: var(--muted2);
+  }
+
+  /* phone frame */
+  .hero-screen { display: flex; justify-content: center; }
+
+  .phone-frame {
+    width: 280px;
+    background: var(--surface2);
+    border: 2px solid var(--border);
+    border-radius: 36px;
+    padding: 12px;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+  }
+
+  .phone-screen {
+    border-radius: 26px;
+    overflow: hidden;
+    background: #111;
+    aspect-ratio: 9/18;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .screenshot { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .phone-screen:not(.placeholder) .placeholder-label { display: none; }
+  .phone-screen.placeholder .screenshot { display: none; }
+  .placeholder-label {
+    font-size: 11px;
+    color: var(--muted2);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+</style>
