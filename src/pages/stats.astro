@@ -1,0 +1,435 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="How Stats Work — The Yips"
+  description="Every stat The Yips tracks, explained. Strokes gained, GIR, fairway hit, shot quality, club distances, and how our baselines are built."
+>
+  <Nav />
+
+  <main>
+    <div class="container">
+
+      <!-- Hero -->
+      <section class="hero">
+        <p class="tag">Stats</p>
+        <h1>How The Yips<br /><em>measures your game.</em></h1>
+        <p class="lead">
+          Every number in the app is here — what it means, how it's calculated,
+          and where the baseline data comes from.
+        </p>
+      </section>
+
+      <!-- Strokes Gained -->
+      <section class="section">
+        <h2>Strokes Gained</h2>
+        <p>
+          Strokes Gained is a methodology developed by Mark Broadie (Columbia Business School)
+          and adopted by the PGA Tour. It measures the impact of every shot by comparing
+          what happened to what was expected from that position.
+        </p>
+        <div class="formula">
+          SG (shot) = Expected strokes before − 1 − Expected strokes after
+        </div>
+        <p>
+          A positive number means you played that shot better than expected.
+          Negative means you gave a stroke back. The sum across all shots on a hole
+          equals the difference between your score and the baseline expectation from the tee.
+        </p>
+
+        <h3>The four categories</h3>
+        <div class="card-grid">
+          <div class="stat-card">
+            <span class="stat-label">Off the Tee</span>
+            <p>Tee shots on par 4s and par 5s. Measures how well your drives set up the rest of the hole.</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Approach</span>
+            <p>Par-3 tee shots and any full-swing shot more than 30 yards from the green.</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Around the Green</span>
+            <p>Chips, pitches, and bump-and-runs from 30 yards or closer. Excludes putts.</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Putting</span>
+            <p>Computed from your first-putt distance. Compared against your selected putting baseline profile.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>A note on our baselines.</strong>
+          The expected-strokes numbers behind Strokes Gained come from two sources:
+          the <em>Tour Pro</em> baseline uses PGA Tour ShotLink data (Broadie), sampled at
+          50-yard intervals. Amateur tier baselines (Scratch through 25 HCP) are derived values —
+          built by applying additive offsets to the tour baseline, using publicly available
+          research from Broadie, the USGA, and Shot Scope make-percentage data.
+          These are The Yips' own derived approximations — not numbers published by any
+          governing body.
+        </div>
+      </section>
+
+      <!-- Shot Quality -->
+      <section class="section">
+        <h2>Shot Quality — Good / Bad</h2>
+        <p>
+          Shot quality is self-assessed by you in the moment — the app doesn't compute
+          it from GPS or distance. It's a two-choice judgment you make right after logging a shot,
+          and it's about <strong>execution, not outcome.</strong>
+        </p>
+        <div class="two-col">
+          <div class="quality-card good">
+            <span class="quality-label">Good</span>
+            <p>You executed the shot you intended. The strike felt right; you committed and carried out the swing or stroke you planned.</p>
+          </div>
+          <div class="quality-card poor">
+            <span class="quality-label">Bad</span>
+            <p>You did not execute the shot you intended — a mishit, chunk, blade, or a swing you knew was wrong the moment you made it.</p>
+          </div>
+        </div>
+        <p>
+          A well-struck drive that takes a bad bounce into a bunker is <strong>Good</strong>.
+          A thin blade that somehow rolls onto the green is <strong>Poor</strong>.
+          Results involve things outside your control — wind, course conditions, bad bounces.
+          Execution does not. That separation is what makes this stat useful.
+        </p>
+        <p>
+          The app requires at least 5 quality-tagged shots per club before showing percentages.
+          Below 60% good, a club is flagged as needing practice.
+          Distance averages shown in your bag use <em>good shots only</em> — so you see what
+          the club does when you hit it well, not your mishits dragging the number down.
+        </p>
+      </section>
+
+      <!-- Classic stats -->
+      <section class="section">
+        <h2>The classics — explained</h2>
+        <div class="classic-grid">
+          <div class="classic-card">
+            <h3>Green in Regulation</h3>
+            <p>
+              You hit the green in regulation when your ball is on the putting surface
+              with at least two putts remaining. On a par 4 that means reaching the green
+              in 2 shots; on a par 5, in 3 shots; on a par 3, off the tee.
+            </p>
+            <div class="formula small">GIR = score − putts ≤ par − 2</div>
+          </div>
+
+          <div class="classic-card">
+            <h3>Fairway Hit</h3>
+            <p>
+              Tracked on par 4s and par 5s. You record whether your tee shot
+              ended up Far Left, Left, Hit (fairway), Right, Far Right, or a
+              Miss-Hit. Only "Hit" counts as a fairway in regulation.
+              Par-3 tee shots are excluded.
+            </p>
+          </div>
+
+          <div class="classic-card">
+            <h3>Up and Down</h3>
+            <p>
+              You missed the green in regulation — but still made par. With one
+              chip or pitch and one putt. That's an up and down. A measure of
+              short-game rescue ability.
+            </p>
+          </div>
+
+          <div class="classic-card">
+            <h3>Putts per Hole</h3>
+            <p>
+              Average number of putts taken per hole. Tour average is around 1.73.
+              Most amateurs are between 1.9 and 2.1. The putting SG stat tells
+              you more, but putts per hole is the fast check.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Club Distances -->
+      <section class="section">
+        <h2>Club Distances</h2>
+        <p>
+          Every shot you log with a club and distance builds your personal distance profile.
+          The app shows two numbers per club:
+        </p>
+        <ul class="dist-list">
+          <li>
+            <strong>Average</strong> — mean across all recorded shots for that club.
+          </li>
+          <li>
+            <strong>Trimmed average</strong> — mean of good shots only (requires 5+).
+            This is the number to trust when picking a club on the course.
+          </li>
+        </ul>
+        <p>
+          Distances are recorded by GPS when available — the app captures the start and end
+          coordinates of each shot. Manually entered distances are used when GPS isn't available.
+        </p>
+      </section>
+
+      <!-- Scoring breakdown -->
+      <section class="section">
+        <h2>Scoring breakdown</h2>
+        <p>
+          Each hole is classified relative to par:
+        </p>
+        <div class="scoring-grid">
+          <div class="score-row"><span class="score-pill eagle">Eagle</span><span>2 or more under par</span></div>
+          <div class="score-row"><span class="score-pill birdie">Birdie</span><span>1 under par</span></div>
+          <div class="score-row"><span class="score-pill par">Par</span><span>Even</span></div>
+          <div class="score-row"><span class="score-pill bogey">Bogey</span><span>1 over par</span></div>
+          <div class="score-row"><span class="score-pill double">Double</span><span>2 over par</span></div>
+          <div class="score-row"><span class="score-pill worse">Double+</span><span>3 or more over par</span></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  main { padding-bottom: 80px; }
+
+  .hero {
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 64px;
+  }
+
+  h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  h1 em { color: var(--green); font-style: normal; }
+
+  .lead {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  /* Sections */
+  .section {
+    margin-bottom: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section:last-child { border-bottom: none; }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 28px 0 14px;
+  }
+
+  p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+    max-width: 680px;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  /* Formula block */
+  .formula {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: var(--green);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--green);
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin: 20px 0;
+    max-width: 520px;
+  }
+
+  .formula.small { font-size: 12px; margin-top: 14px; margin-bottom: 0; }
+
+  /* Callout */
+  .callout {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 680px;
+    margin-top: 24px;
+  }
+
+  .callout strong { color: var(--text); }
+  .callout em { color: var(--green); font-style: normal; }
+
+  /* SG category cards */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 600px) {
+    .card-grid { grid-template-columns: 1fr; }
+  }
+
+  .stat-card {
+    background: var(--surface);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+
+  .stat-card p { font-size: 13px; margin-bottom: 0; }
+
+  /* Shot quality */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0;
+    max-width: 680px;
+  }
+
+  @media (max-width: 500px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+
+  .quality-card {
+    border-radius: 8px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .quality-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .quality-card.good .quality-label { color: var(--green); }
+  .quality-card.poor .quality-label { color: #DC2626; }
+  .quality-card p { font-size: 13px; color: var(--muted); margin-bottom: 0; }
+
+  /* Classic stats */
+  .classic-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  @media (max-width: 600px) {
+    .classic-grid { grid-template-columns: 1fr; }
+  }
+
+  .classic-card {
+    background: var(--surface);
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .classic-card h3 { margin: 0; font-size: 14px; }
+  .classic-card p { font-size: 13px; margin-bottom: 0; }
+
+  /* Club distances */
+  .dist-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 16px 0;
+    max-width: 620px;
+  }
+
+  .dist-list li {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    padding-left: 16px;
+    border-left: 2px solid var(--green);
+  }
+
+  .dist-list li strong { color: var(--text); }
+
+  /* Scoring */
+  .scoring-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+    max-width: 420px;
+  }
+
+  .score-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+
+  .score-pill {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    width: 72px;
+    text-align: center;
+    flex-shrink: 0;
+    letter-spacing: 0.03em;
+  }
+
+  .eagle  { background: #1a3a2a; color: #4ADE80; }
+  .birdie { background: #1a3a2a; color: #86efac; }
+  .par    { background: #1e2a3a; color: #93c5fd; }
+  .bogey  { background: #2a2010; color: #fbbf24; }
+  .double { background: #2a1810; color: #f97316; }
+  .worse  { background: #2a1010; color: #DC2626; }
+</style>

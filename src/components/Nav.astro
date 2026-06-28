@@ -8,9 +8,12 @@ const DOWNLOAD_URL = 'https://github.com/undeadC0rp/theyipsapp-releases/releases
       <span class="logo-the">the</span>
       <span class="logo-yips">Yips</span>
     </a>
-    <a href={DOWNLOAD_URL} class="nav-dl" target="_blank" rel="noopener">
-      Download APK
-    </a>
+    <div class="nav-right">
+      <a href="/stats" class="nav-link">Stats</a>
+      <a href={DOWNLOAD_URL} class="nav-dl" target="_blank" rel="noopener">
+        Download APK
+      </a>
+    </div>
   </div>
 </nav>
 
@@ -31,6 +34,21 @@ const DOWNLOAD_URL = 'https://github.com/undeadC0rp/theyipsapp-releases/releases
     padding-top: 16px;
     padding-bottom: 16px;
   }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    transition: color 0.15s;
+  }
+
+  .nav-link:hover { color: var(--text); }
 
   .nav-logo {
     display: flex;
