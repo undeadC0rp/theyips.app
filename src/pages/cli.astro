@@ -1,0 +1,432 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="CLI — The Yips"
+  description="Access your golf stats from the terminal. Install the yips CLI via Homebrew and pull your rounds, stats, and strokes gained data from any terminal."
+>
+  <Nav />
+
+  <main>
+    <div class="container">
+
+      <!-- Hero -->
+      <section class="hero">
+        <p class="tag">CLI</p>
+        <h1>Your stats,<br /><em>in the terminal.</em></h1>
+        <p class="lead">
+          Pull your rounds, stats, and strokes gained data from any terminal.
+          Pipe it into a spreadsheet, feed it to an AI, or just read it over coffee.
+        </p>
+      </section>
+
+      <!-- Install -->
+      <section class="section">
+        <h2>Install</h2>
+
+        <h3>Homebrew <span class="platform-badge">macOS / Linux</span></h3>
+        <pre class="terminal"><code>brew install --cask undeadC0rp/tap/yips</code></pre>
+
+        <h3>Go install <span class="platform-badge">any platform</span></h3>
+        <pre class="terminal"><code>go install github.com/undeadC0rp/theyips-cli/cmd/yips@latest</code></pre>
+
+        <h3>Getting started</h3>
+        <p>Authenticate with your Google account. This opens a browser for OAuth — credentials are stored at <code class="inline">~/.config/yips/credentials.json</code> and refreshed automatically.</p>
+        <pre class="terminal"><code>yips login</code></pre>
+      </section>
+
+      <!-- Commands -->
+      <section class="section">
+        <h2>Commands</h2>
+
+        <!-- rounds -->
+        <div class="cmd-block">
+          <div class="cmd-header">
+            <span class="cmd-name">yips rounds</span>
+            <span class="cmd-desc">List all your rounds</span>
+          </div>
+          <pre class="terminal output"><code>ID        DATE        COURSE            HOLES  SCORE  +/-
+a1b2c3d4  2024-11-03  Pine Valley GC    18     82     +10
+b5c6d7e8  2024-10-20  Cypress Creek CC  18     79     +7</code></pre>
+        </div>
+
+        <!-- round -->
+        <div class="cmd-block">
+          <div class="cmd-header">
+            <span class="cmd-name">yips round &lt;id&gt;</span>
+            <span class="cmd-desc">Hole-by-hole scorecard with strokes gained</span>
+          </div>
+          <p class="cmd-note">Use the short ID prefix shown in <code class="inline">yips rounds</code>. Add <code class="inline">--profile hcp_10</code> to compare against a different benchmark.</p>
+          <pre class="terminal output"><code>Pine Valley GC  ·  2024-11-03  ·  18 holes
+Rating: 74.5  ·  Slope: 142  ·  Par: 72
+SG benchmark: tour_pro (putting: scratch)
+
+HOLE  PAR  SCORE  +/-   PUTTS  FIR  GIR  SG:TEE  SG:APP  SG:ARG  SG:PUTT
+1     4    5      +1    2      Y    N    -       -       -       -0.78
+2     3    4      +1    2      -    N    -       -       -       -0.42
+4     4    4      E     1      Y    N    -0.21   -1.00   +0.18   +0.02
+5     4    3      -1    1      Y    Y    -0.06   +0.95   -       +0.00
+───   ───  ─────  ────  ─────  ───  ───  ──────  ──────  ──────  ───────
+TOT   72   82     +10   34     9/14 10/18 +1.20  -3.41   +0.18   -1.18</code></pre>
+        </div>
+
+        <!-- hole -->
+        <div class="cmd-block">
+          <div class="cmd-header">
+            <span class="cmd-name">yips hole &lt;id&gt; &lt;hole&gt;</span>
+            <span class="cmd-desc">Shot-by-shot chart for a single hole</span>
+          </div>
+          <p class="cmd-note">Requires shot data recorded in the mobile app. Each bar shows where the shot started relative to the hole length.</p>
+          <pre class="terminal output"><code>Hole 5  Par 4  350yds  Score: 3 (-1)
+
+         0                        175                  350yds
+         ────────────────────────────────────────────────────
+TEE    1 █████████████████████████████░░░░░░░░░░░░░░░░░░░░░  200yds   FWY
+APP    2 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░███████████████████████  155yds   FWY
+PUTT   3 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░●  Gimmie</code></pre>
+        </div>
+
+        <!-- stats -->
+        <div class="cmd-block">
+          <div class="cmd-header">
+            <span class="cmd-name">yips stats</span>
+            <span class="cmd-desc">Aggregate stats across all rounds</span>
+          </div>
+          <pre class="terminal output"><code>12 rounds  ·  Last played 2024-11-03
+
+METRIC           VALUE
+Scoring average  84.2
+Average +/-      +12.2
+Putts / round    33.1
+Fairways hit     58%
+GIR              38%
+Up & down        32%
+
+PAR  HOLES  AVG SCORE
+3    72     3.42
+4    216    4.61
+5    72     5.38</code></pre>
+        </div>
+
+        <!-- stats id -->
+        <div class="cmd-block">
+          <div class="cmd-header">
+            <span class="cmd-name">yips stats &lt;id&gt;</span>
+            <span class="cmd-desc">Full breakdown for a single round</span>
+          </div>
+          <pre class="terminal output"><code>Pine Valley GC  ·  2024-11-03
+SG benchmark: tour_pro (putting: scratch)
+
+METRIC                VALUE
+Score                 82 (+10)
+Putts                 34
+Fairways hit          9/14 (64%)
+GIR                   10/18 (56%)
+Up & down             4/8 (50%)
+SG: Off-the-Tee       +1.20 (10 holes)
+SG: Approach          -3.41 (12 holes)
+SG: Around-the-Green  +0.18 (3 holes)
+SG: Putting           -1.18 (16 holes)
+
+SCORING  COUNT
+Birdie   2
+Par      8
+Bogey    6
+Double   2</code></pre>
+        </div>
+
+        <!-- clubs -->
+        <div class="cmd-block">
+          <div class="cmd-header">
+            <span class="cmd-name">yips clubs</span>
+            <span class="cmd-desc">Distance and strokes gained per club</span>
+          </div>
+          <p class="cmd-note">SG per club is aggregated from shot-level data. Add <code class="inline">--json</code> to emit raw data for further analysis.</p>
+          <pre class="terminal output"><code>CLUB               BRAND    SHOTS  AVG  MIN  MAX  SG TOTAL  SG/SHOT
+Driver KING LTDx   Cobra      20   264  198  328    +7.47    +0.498
+7 Wood             Cobra      10   178   40  234    +1.15    +0.128
+7i                 Takomo      5   158  140  171    -0.65    -0.325
+Putter             L.A.B.      0     -    -    -   -14.29    -0.265</code></pre>
+        </div>
+
+        <!-- holes -->
+        <div class="cmd-block">
+          <div class="cmd-header">
+            <span class="cmd-name">yips holes &lt;course&gt;</span>
+            <span class="cmd-desc">Per-hole breakdown across all rounds at a course</span>
+          </div>
+          <p class="cmd-note">Accepts a partial, case-insensitive course name. Holes are flagged (<code class="inline">*</code>) when you're averaging +1.0 or worse and GIR is below 30% across 3+ rounds.</p>
+          <pre class="terminal output"><code>Course: Riverbend GC  ·  3 rounds
+
+HOLE  PAR  RNDS  AVG +/-  FIR%  GIR%  TEE CLUB  ⚠
+1     4    3     +0.7     67%   44%   Driver
+7     4    3     +1.3     33%    0%   Driver     *
+
+* Club selection review:
+  Hole 7 (par 4) — Driver 3× (avg +1.3) — consider a shorter club off the tee</code></pre>
+        </div>
+
+        <!-- notes -->
+        <div class="cmd-block">
+          <div class="cmd-header">
+            <span class="cmd-name">yips notes</span>
+            <span class="cmd-desc">All notes across every round</span>
+          </div>
+          <p class="cmd-note">Filter by course with <code class="inline">--course &lt;name&gt;</code>. Add <code class="inline">--json</code> to get raw output.</p>
+          <pre class="terminal"><code>yips notes --course "Pine Valley"</code></pre>
+        </div>
+
+      </section>
+
+      <!-- Flags -->
+      <section class="section">
+        <h2>Flags &amp; options</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Flag</th><th>Commands</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>--profile &lt;slug&gt;</code></td>
+                <td><code>round</code>, <code>stats</code>, <code>clubs</code></td>
+                <td>SG benchmark profile. Valid slugs: <code>tour_pro</code>, <code>scratch</code>, <code>hcp_5</code>, <code>hcp_10</code>, <code>hcp_15</code>, <code>hcp_20</code>, <code>hcp_25</code>. Default: <code>tour_pro</code>.</td>
+              </tr>
+              <tr>
+                <td><code>--estimate</code></td>
+                <td><code>round</code>, <code>stats</code></td>
+                <td>Fill GPS-missing distances from hole yardage and club averages so partial holes still show a split. Estimated cells are marked with <code>~</code>.</td>
+              </tr>
+              <tr>
+                <td><code>--json</code></td>
+                <td><code>notes</code>, <code>clubs</code>, <code>holes</code></td>
+                <td>Emit raw JSON for piping into other tools.</td>
+              </tr>
+              <tr>
+                <td><code>--course &lt;name&gt;</code></td>
+                <td><code>notes</code></td>
+                <td>Filter by partial, case-insensitive course name.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Environment variables</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Variable</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>YIPS_TOKEN</code></td>
+                <td>—</td>
+                <td>Google ID token; bypasses stored credentials.</td>
+              </tr>
+              <tr>
+                <td><code>YIPS_API_URL</code></td>
+                <td><code>https://api.theyips.app</code></td>
+                <td>Override the API base URL.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Pipe it anywhere -->
+      <section class="section">
+        <h2>Pipe it anywhere</h2>
+        <p>
+          Every command that accepts <code class="inline">--json</code> outputs clean JSON you can pipe into anything —
+          a spreadsheet, a script, or an AI.
+        </p>
+        <pre class="terminal"><code>yips holes 'Riverbend' --json | claude "where is my club selection hurting me most?"</code></pre>
+        <pre class="terminal"><code>yips clubs --json > clubs.json</code></pre>
+        <pre class="terminal"><code>yips rounds | grep "Pine Valley"</code></pre>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  main { padding-bottom: 80px; }
+
+  .hero {
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 64px;
+  }
+
+  h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  h1 em { color: var(--green); font-style: normal; }
+
+  .lead {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  /* Sections */
+  .section {
+    margin-bottom: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section:last-child { border-bottom: none; }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 28px 0 10px;
+  }
+
+  p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 12px;
+    max-width: 680px;
+  }
+
+  .platform-badge {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 7px;
+    vertical-align: middle;
+    margin-left: 6px;
+    letter-spacing: 0;
+  }
+
+  /* Terminal blocks */
+  .terminal {
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 16px 20px;
+    overflow-x: auto;
+    margin: 12px 0 20px;
+    font-family: 'Courier New', 'Menlo', 'Monaco', monospace;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: #e2e8f0;
+    white-space: pre;
+  }
+
+  .terminal code { font-family: inherit; font-size: inherit; }
+
+  .terminal.output { color: #94a3b8; }
+
+  code.inline {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--green);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1px 5px;
+  }
+
+  /* Command blocks */
+  .cmd-block {
+    margin-bottom: 40px;
+  }
+
+  .cmd-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+
+  .cmd-name {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--green);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+
+  .cmd-desc {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .cmd-note {
+    font-size: 13px;
+    color: var(--muted2);
+    margin-bottom: 8px;
+    max-width: 620px;
+  }
+
+  /* Tables */
+  .table-wrap {
+    overflow-x: auto;
+    margin-bottom: 28px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted2);
+    padding: 8px 16px 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  td {
+    padding: 10px 16px 10px 0;
+    color: var(--muted);
+    vertical-align: top;
+    border-bottom: 1px solid #2a2a2a;
+    line-height: 1.6;
+  }
+
+  td code {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--green);
+    white-space: nowrap;
+  }
+
+  td:first-child code { white-space: nowrap; }
+</style>
