@@ -85,14 +85,14 @@ import Footer from '../components/Footer.astro';
             <span class="quality-label">Good</span>
             <p>You executed the shot you intended. The strike felt right; you committed and carried out the swing or stroke you planned.</p>
           </div>
-          <div class="quality-card poor">
+          <div class="quality-card bad">
             <span class="quality-label">Bad</span>
             <p>You did not execute the shot you intended — a mishit, chunk, blade, or a swing you knew was wrong the moment you made it.</p>
           </div>
         </div>
         <p>
           A well-struck drive that takes a bad bounce into a bunker is <strong>Good</strong>.
-          A thin blade that somehow rolls onto the green is <strong>Poor</strong>.
+          A thin blade that somehow rolls onto the green is <strong>Bad</strong>.
           Results involve things outside your control — wind, course conditions, bad bounces.
           Execution does not. That separation is what makes this stat useful.
         </p>
@@ -377,7 +377,7 @@ import Footer from '../components/Footer.astro';
   }
 
   .quality-card.good .quality-label { color: var(--green); }
-  .quality-card.poor .quality-label { color: #DC2626; }
+  .quality-card.bad .quality-label { color: #DC2626; }
   .quality-card p { font-size: 13px; color: var(--muted); margin-bottom: 0; }
 
   /* Classic stats */
