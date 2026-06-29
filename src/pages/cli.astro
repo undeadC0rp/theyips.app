@@ -30,8 +30,8 @@ import Footer from '../components/Footer.astro';
         <h3>Homebrew <span class="platform-badge">macOS / Linux</span></h3>
         <pre class="terminal"><code>brew install --cask undeadC0rp/tap/yips</code></pre>
 
-        <h3>Go install <span class="platform-badge">any platform</span></h3>
-        <pre class="terminal"><code>go install github.com/undeadC0rp/theyips-cli/cmd/yips@latest</code></pre>
+        <h3>Windows <span class="platform-badge">manual install</span></h3>
+        <p>Download the latest <code class="inline">yips_windows_amd64.zip</code> (Intel) or <code class="inline">yips_windows_arm64.zip</code> (ARM) from the <a class="inline-link" href="https://github.com/undeadC0rp/theyips-cli/releases/latest" target="_blank" rel="noopener">releases page</a>, extract, and add <code class="inline">yips.exe</code> to your PATH.</p>
 
         <h3>Getting started</h3>
         <p>Authenticate with your Google account. This opens a browser for OAuth — credentials are stored at <code class="inline">~/.config/yips/credentials.json</code> and refreshed automatically.</p>
@@ -429,4 +429,7 @@ HOLE  PAR  RNDS  AVG +/-  FIR%  GIR%  TEE CLUB  ⚠
   }
 
   td:first-child code { white-space: nowrap; }
+
+  .inline-link { color: var(--green); text-decoration: underline; text-underline-offset: 2px; }
+  .inline-link:hover { opacity: 0.8; }
 </style>
