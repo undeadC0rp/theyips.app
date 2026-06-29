@@ -173,10 +173,37 @@ HOLE  PAR  RNDS  AVG +/-  FIR%  GIR%  TEE CLUB  ⚠
         <div class="cmd-block">
           <div class="cmd-header">
             <span class="cmd-name">yips notes</span>
-            <span class="cmd-desc">All notes across every round</span>
+            <span class="cmd-desc">Your scorecard tells you what happened. Notes tell you why.</span>
           </div>
-          <p class="cmd-note">Filter by course with <code class="inline">--course &lt;name&gt;</code>. Add <code class="inline">--json</code> to get raw output.</p>
-          <pre class="terminal"><code>yips notes --course "Pine Valley"</code></pre>
+          <p class="cmd-note">
+            Add freeform notes to any hole or round in the app — context on a double bogey,
+            a decision that backfired, or anything worth remembering. <code class="inline">yips notes</code>
+            surfaces all of them across every round. Filter by course with <code class="inline">--course &lt;name&gt;</code>.
+          </p>
+          <pre class="terminal output"><code>Round: Pine Valley GC  ·  2024-11-03  ·  82 (+10)  [a1b2c3d4]
+
+Hole 7  Par 4  Index 3  412yds  Score: 6 (+2)
+  Tried to cut the corner on the dogleg, pulled driver into the trees.
+  Punched out sideways, chunked the third. Down the left side next time.
+
+Hole 16  Par 4  Index 1  445yds  Score: 7 (+3)
+  Three-putted from 8 feet. Mental collapse after the drive caught the rough.
+
+---
+
+Round: Cypress Creek CC  ·  2024-10-20  ·  79 (+7)  [b5c6d7e8]
+
+Hole 3  Par 5  Index 9  520yds  Score: 8 (+3)
+  Lost two balls in the hazard. Should have laid up off the tee.</code></pre>
+
+          <p class="cmd-note">Use <code class="inline">yips notes &lt;id&gt;</code> to pull notes for a single round.</p>
+
+          <p class="cmd-note">
+            Add <code class="inline">--json</code> to get structured output — each note includes hole number,
+            par, yardage, hole index, score, and score vs par. Enough context for an AI to find
+            patterns across months of rounds:
+          </p>
+          <pre class="terminal"><code>yips notes --json | claude "what patterns do you see in my double bogeys or worse? what should I focus on?"</code></pre>
         </div>
 
       </section>
@@ -243,6 +270,7 @@ HOLE  PAR  RNDS  AVG +/-  FIR%  GIR%  TEE CLUB  ⚠
           Every command that accepts <code class="inline">--json</code> outputs clean JSON you can pipe into anything —
           a spreadsheet, a script, or an AI.
         </p>
+        <pre class="terminal"><code>yips notes --json | claude "what patterns do you see in my double bogeys or worse? what should I focus on?"</code></pre>
         <pre class="terminal"><code>yips holes 'Riverbend' --json | claude "where is my club selection hurting me most?"</code></pre>
         <pre class="terminal"><code>yips clubs --json > clubs.json</code></pre>
         <pre class="terminal"><code>yips rounds | grep "Pine Valley"</code></pre>
