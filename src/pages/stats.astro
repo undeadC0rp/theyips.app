@@ -186,6 +186,35 @@ import Footer from '../components/Footer.astro';
         </div>
       </section>
 
+      <!-- Notes -->
+      <section class="section">
+        <h2>Notes</h2>
+        <p>
+          Your scorecard tells you what happened. Notes tell you why.
+        </p>
+        <p>
+          Add freeform text to any hole or round in the app — context on a decision that
+          backfired, a double bogey that had a reason, or occasionally something worth
+          remembering about a good hole. There's no structure required; write what you'd
+          tell your playing partner walking off the green.
+        </p>
+        <p>
+          Over time, notes become a pattern log. A double bogey on hole 7 three rounds in a row,
+          always from the same spot — that shows up when you read them back. Feed your notes
+          into an AI and it can quantify what the scorecard alone can't: not just that you're
+          averaging +2 on par 5s, but why.
+        </p>
+        <div class="note-example">
+          <span class="note-meta">Hole 7 · Par 4 · 412yds · Score: 6 (+2)</span>
+          <p class="note-text">Tried to cut the corner on the dogleg, pulled driver into the trees. Punched out sideways, chunked the third. Down the left side next time.</p>
+        </div>
+        <p>
+          Notes are accessible in the app and via the CLI — <code class="inline">yips notes --json</code>
+          exports all of them with hole context (score, yardage, hole index) in a format
+          ready to pipe anywhere.
+        </p>
+      </section>
+
     </div>
   </main>
 
@@ -432,4 +461,44 @@ import Footer from '../components/Footer.astro';
   .bogey  { background: #2a2010; color: #fbbf24; }
   .double { background: #2a1810; color: #f97316; }
   .worse  { background: #2a1010; color: #DC2626; }
+
+  /* Notes */
+  code.inline {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--green);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1px 5px;
+  }
+
+  .note-example {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--muted2);
+    border-radius: 6px;
+    padding: 16px 20px;
+    max-width: 620px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .note-meta {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted2);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .note-text {
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 0;
+  }
 </style>
