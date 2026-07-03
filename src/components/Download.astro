@@ -1,27 +1,25 @@
 ---
-const DOWNLOAD_URL = 'https://github.com/undeadC0rp/theyipsapp-releases/releases/latest';
+const BETA_URL = 'https://play.google.com/apps/internaltest/4701416432270157981';
+const APK_URL = 'https://github.com/undeadC0rp/theyipsapp-releases/releases/latest';
 ---
 
 <section class="download">
   <div class="container inner">
     <div class="copy">
       <h2>Ready to stop<br /><em>guessing?</em></h2>
-      <p>Free download. No account required to get started.</p>
+      <p>Free beta. Sign in with Google to get started.</p>
     </div>
     <div class="actions">
-      <a href={DOWNLOAD_URL} class="btn-primary" target="_blank" rel="noopener">
+      <a href={BETA_URL} class="btn-primary" target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-          <polyline points="7 10 12 15 17 10"/>
-          <line x1="12" y1="15" x2="12" y2="3"/>
+          <path d="M5 12l5 5L20 7"/>
         </svg>
-        Download APK
+        Join the Beta on Google Play
       </a>
-      <p class="note">
-        Android only · Sideload required ·
-        <a href="https://www.howtogeek.com/313433/how-to-sideload-apps-on-android/" target="_blank" rel="noopener" class="how-link">How to sideload</a>
+      <p class="note">Android only · expect rough edges · feedback welcome</p>
+      <p class="store-note">
+        Prefer to sideload? <a href={APK_URL} target="_blank" rel="noopener" class="how-link">Download APK</a>
       </p>
-      <p class="store-note">Google Play Store listing coming soon</p>
     </div>
   </div>
 </section>
