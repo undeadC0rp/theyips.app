@@ -1,0 +1,45 @@
+---
+const BETA_URL = 'https://play.google.com/apps/internaltest/4701416432270157981';
+---
+
+<div class="beta-banner">
+  <span class="beta-badge">BETA</span>
+  <span class="beta-text">Android beta is live — expect rough edges.</span>
+  <a href={BETA_URL} class="beta-link" target="_blank" rel="noopener">Join the beta →</a>
+</div>
+
+<style>
+  .beta-banner {
+    background: rgba(74, 222, 128, 0.08);
+    border-bottom: 1px solid rgba(74, 222, 128, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px 16px;
+    font-size: 13px;
+    flex-wrap: wrap;
+  }
+
+  .beta-badge {
+    background: var(--green);
+    color: #1a1a1a;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+
+  .beta-text {
+    color: var(--muted);
+  }
+
+  .beta-link {
+    color: var(--green);
+    font-weight: 600;
+    transition: opacity 0.15s;
+  }
+
+  .beta-link:hover { opacity: 0.8; }
+</style>
