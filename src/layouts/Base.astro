@@ -6,6 +6,11 @@ interface Props {
   description?: string;
 }
 
+// Cloudflare Web Analytics: cookieless, no cross-site tracking. Set at build
+// time; with no token the beacon is omitted, so local and preview builds
+// report nothing.
+const beaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
+
 const {
   title = 'The Yips — Golf Stats Tracker',
   description = 'Track it. Face it. Suck less. A golf stats app focused on strokes gained — the methodology that actually explains your game.',
@@ -29,6 +34,15 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content="https://theyips.app" />
+    {
+      beaconToken && (
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={JSON.stringify({ token: beaconToken })}
+        />
+      )
+    }
   </head>
   <body>
     <slot />
