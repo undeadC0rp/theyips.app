@@ -7,7 +7,7 @@ import Base from '../layouts/Base.astro';
     <a href="/" style="color: #4ADE80; text-decoration: none; font-size: 0.9rem;">← Back to The Yips</a>
 
     <h1 style="margin-top: 2rem; color: #ffffff; font-size: 2rem;">Privacy Policy</h1>
-    <p style="color: #9ca3af; font-size: 0.9rem;">Effective date: July 2, 2026</p>
+    <p style="color: #9ca3af; font-size: 0.9rem;">Effective date: October 1, 2026</p>
 
     <p>The Yips is a golf stats tracker built for golfers who want to understand and improve their game. This policy explains what data the app collects, how it's used, and your rights around it.</p>
 
@@ -17,6 +17,7 @@ import Base from '../layouts/Base.astro';
       <li><strong>Golf data</strong> — rounds, scores, hole-by-hole stats, shot distances, club selections, and course information you enter or record in the app.</li>
       <li><strong>Location data</strong> — GPS coordinates captured during a round to measure shot distances and record green locations. Location is only accessed when you actively use shot-tracking features.</li>
       <li><strong>Device information</strong> — basic device identifiers used for authentication and app functionality.</li>
+      <li><strong>Usage and diagnostics</strong> — anonymous usage events (for example: a round was started or completed, the subscription screen was viewed), crash and error reports, the app version, and when you last used the app. These are tied to a random per-install identifier, not to your name or email, and never include your courses, location, or scores.</li>
     </ul>
 
     <h2 style="color: #ffffff; margin-top: 2rem;">How We Use It</h2>
@@ -24,7 +25,7 @@ import Base from '../layouts/Base.astro';
       <li>To provide the app's core features: round tracking, strokes gained analysis, and club performance stats.</li>
       <li>To sync your data across devices via The Yips API (our backend, hosted in the United States).</li>
       <li>To calculate your handicap differential and strokes gained metrics.</li>
-      <li>To improve the app based on aggregate, anonymized usage patterns.</li>
+      <li>To improve the app based on aggregate, anonymized usage patterns, and to find and fix crashes.</li>
       <li>To train and improve the AI Caddy feature using anonymized shot, distance, and club data. This data is stripped of all personally identifiable information before use.</li>
     </ul>
     <p>We do not sell your data. We do not use your golf data for advertising.</p>
@@ -33,7 +34,12 @@ import Base from '../layouts/Base.astro';
     <ul>
       <li><strong>Google Sign-In</strong> — used for authentication. Subject to <a href="https://policies.google.com/privacy" style="color: #4ADE80;">Google's Privacy Policy</a>.</li>
       <li><strong>Apple Sign-In</strong> — used for authentication on iOS. Subject to <a href="https://www.apple.com/legal/privacy/" style="color: #4ADE80;">Apple's Privacy Policy</a>.</li>
+      <li><strong>PostHog</strong> — anonymous product analytics, processed in the European Union. Subject to <a href="https://posthog.com/privacy" style="color: #4ADE80;">PostHog's Privacy Policy</a>.</li>
+      <li><strong>Sentry</strong> — crash and error reporting. Subject to <a href="https://sentry.io/privacy/" style="color: #4ADE80;">Sentry's Privacy Policy</a>.</li>
     </ul>
+
+    <h2 style="color: #ffffff; margin-top: 2rem;">Opting Out of Analytics</h2>
+    <p>Anonymous usage analytics and crash reports are on by default. You can turn them off at any time in the app under Settings → Privacy → "Share anonymous usage data". When it is off, the app sends no analytics events or crash reports.</p>
 
     <h2 style="color: #ffffff; margin-top: 2rem;">Data Retention</h2>
     <p>Your data is retained as long as your account is active. You can request deletion of your account and all associated data at any time by contacting us.</p>
