@@ -1,0 +1,123 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import VideoSlot from '../../components/VideoSlot.astro';
+---
+
+<GuideLayout
+  title="Logging a round"
+  tag="Guide"
+  description="From New round to Finish round. Hole entry is where your data comes from, so this is the page to read twice."
+>
+  <section class="section">
+    <h2>Watch it first</h2>
+    <p>A couple of minutes, start to finish.</p>
+    <VideoSlot title="Logging a round in The Yips" />
+  </section>
+
+  <section class="section">
+    <h2>1. Start a round</h2>
+    <ol>
+      <li>On the home screen, tap <span class="ui">New round</span>.</li>
+      <li>Pick your course. <span class="ui">Nearby courses</span> uses your location, or use <span class="ui">Search by name</span>.</li>
+      <li>Choose the tee you're playing from.</li>
+      <li>
+        Under <span class="ui">Round setup</span>, set the number of holes,
+        the ball you're playing, and whether you're walking or in a cart. If
+        you're not starting on the 1st, set <span class="ui">Starting hole</span>.
+      </li>
+      <li>Tap <span class="ui">Start round</span>.</li>
+    </ol>
+    <p>
+      Temperature and wind are recorded with the round, so a windy day is
+      remembered as a windy day when you look back at the numbers.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>2. Log each hole</h2>
+    <p>
+      The hole screen is one scrolling page. Work through it in any order.
+      Your round is kept on your phone as you play.
+    </p>
+
+    <h3>Shots</h3>
+    <p>
+      Tap <span class="ui">Add shot</span> for each full swing. For each shot:
+    </p>
+    <ul>
+      <li><strong>Club:</strong> tap <span class="ui">Select club</span> and pick from your bag.</li>
+      <li><strong>Lie:</strong> Fairway, 1st Cut, Rough, or Sand. This is where the ball was when you hit it, not where it ended up.</li>
+      <li><strong>Wind:</strong> No wind, Into wind, With wind, or Cross wind.</li>
+      <li><strong>Quality:</strong> Good or Bad. Judge the swing, not the result. A thin blade that rolls onto the green is still Bad.</li>
+      <li>
+        <strong>Distance:</strong> tap <span class="ui">Start GPS tracking</span>
+        at the ball, walk to where it ended up, and tap
+        <span class="ui">Mark end</span>. The app measures the distance for you.
+      </li>
+    </ul>
+
+    <h3>Tee shot accuracy</h3>
+    <p>
+      On par 4s and 5s, record where the drive finished: <span class="ui">Hit</span>
+      for the fairway, <span class="ui">&lt;</span> or <span class="ui">&lt;&lt;</span>
+      for left, <span class="ui">&gt;</span> or <span class="ui">&gt;&gt;</span> for
+      right, or <span class="ui">Miss-hit</span>.
+    </p>
+
+    <h3>Score and putts</h3>
+    <ul>
+      <li><strong>Strokes:</strong> your total for the hole.</li>
+      <li><strong>Putts:</strong> how many you took on the green.</li>
+      <li><strong>Putt distance:</strong> the length of your first putt. This is what Strokes Gained uses for putting.</li>
+    </ul>
+    <p>
+      Green in regulation, up and down, and sand save are worked out for you
+      from your score, putts, and shots. A badge appears when one applies.
+    </p>
+
+    <h3>Penalties</h3>
+    <p>
+      Open <span class="ui">Penalties</span> and add <span class="ui">OB</span>
+      for out of bounds or <span class="ui">Drop</span> for water and lost balls.
+      They're tracked separately from your Strokes Gained categories.
+    </p>
+
+    <h3>Notes</h3>
+    <p>
+      Add a hole note if there's context worth remembering, like a bad bounce
+      or a club you'd never hit again. Notes are optional.
+    </p>
+
+    <h3>Caddy</h3>
+    <p>
+      If you have The Caddy, a Caddy section suggests clubs for the hole based
+      on your own distances. It's advice, not a rule.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>3. Move on, or finish</h2>
+    <p>
+      Tap <span class="ui">Save &amp; next hole</span> to move on. After the last
+      hole it becomes <span class="ui">Finish round</span>, and you land on the
+      round summary with your scorecard and Strokes Gained.
+    </p>
+    <div class="callout">
+      <strong>Need to stop mid-round?</strong> Tap the home icon in the top
+      bar. Your round stays in progress and is waiting for you when you come
+      back. Closing the app loses nothing.
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Tips</h2>
+    <ul>
+      <li>Log shots as you play. Reconstructing a round at the 19th hole is how data goes wrong.</li>
+      <li>If GPS is slow to lock, wait for the signal to settle before you mark. A poor signal means a poor distance.</li>
+      <li>Missing a shot's details is fine. Skip it and move on rather than guessing.</li>
+    </ul>
+    <p>
+      Not sure what a stat means? See <a href="/stats" class="ui">how stats work</a>.
+    </p>
+  </section>
+</GuideLayout>

@@ -1,0 +1,94 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import VideoSlot from '../../components/VideoSlot.astro';
+---
+
+<GuideLayout
+  title="The screens"
+  tag="Guide"
+  description="What each part of the app shows, and when it's worth opening."
+>
+  <section class="section">
+    <h2>Watch it first</h2>
+    <p>A quick tour of the app after a few rounds are logged.</p>
+    <VideoSlot title="A tour of The Yips screens" />
+  </section>
+
+  <section class="section">
+    <h2>The bottom bar</h2>
+    <p>
+      Four tabs: <span class="ui">Rounds</span>, <span class="ui">Bag</span>,
+      <span class="ui">Trends</span>, and <span class="ui">Stats</span>. Settings
+      lives behind the gear on the Rounds screen.
+    </p>
+
+    <h3>Rounds</h3>
+    <p>
+      Your recent rounds, your career averages, and your handicap badge.
+      Tap <span class="ui">New round</span> to start one, or tap a past round
+      to open its detail. A round in progress is pinned here, with a shortcut
+      to resume it.
+    </p>
+
+    <h3>Round detail</h3>
+    <p>
+      The full picture of one round: scorecard, stats grid, scoring breakdown,
+      and the highlights (eagles through doubles, up and downs, sand saves).
+      The Yips will also have an opinion about how you played. Brace yourself.
+    </p>
+
+    <h3>Bag</h3>
+    <p>
+      Your clubs, which ones are in the bag, and the average distance for
+      each. Tap a club for its history. Averages use your good shots only, so
+      you see what the club does when you hit it well, and a club needs 5 good
+      shots before outliers are trimmed.
+    </p>
+
+    <h3>Trends</h3>
+    <p>
+      Charts over time, and the way into the deeper views below. This is the
+      place to spot a pattern across rounds, not just in the last one.
+    </p>
+
+    <h3>Stats</h3>
+    <p>
+      Career numbers: scoring distribution, putts, penalties, and the classics
+      like fairways and greens in regulation. See
+      <a href="/stats" class="ui">how stats work</a> for what each one means.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>The deeper views</h2>
+    <p>Open these from <span class="ui">Trends</span>.</p>
+
+    <h3>Strokes Gained</h3>
+    <p>
+      Where your strokes went, split into Off the Tee, Approach, Around the
+      Green, and Putting, compared against the handicap level you pick in
+      Settings. A negative number isn't a failure. It's where the strokes are.
+    </p>
+
+    <h3>Putting</h3>
+    <p>How many putts you take, broken down by first-putt distance.</p>
+
+    <h3>Tee shots</h3>
+    <p>Fairways hit, which way you miss, and how each tee shot sets up the hole.</p>
+
+    <h3>Club performance</h3>
+    <p>
+      How each club is really performing: distances, how often your shots are
+      good, and which club is overdue for some practice.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>Settings</h2>
+    <p>
+      Theme, on-course options, your account and sync, the Strokes Gained
+      benchmark level, privacy options, and feedback. If something about the
+      app isn't the way you want it, look here first.
+    </p>
+  </section>
+</GuideLayout>

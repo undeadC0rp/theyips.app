@@ -1,0 +1,173 @@
+---
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  tag: string;
+}
+
+const { title, description, tag } = Astro.props;
+---
+
+<Base title={`${title} | The Yips`} description={description}>
+  <Nav />
+
+  <main class="guide">
+    <div class="container">
+      <section class="guide-hero">
+        <p class="tag">{tag}</p>
+        <h1>{title}</h1>
+        <p class="lead">{description}</p>
+        <nav class="guide-links" aria-label="Guide pages">
+          <a href="/guide">Guide home</a>
+          <a href="/guide/hole-entry">Hole entry</a>
+          <a href="/guide/screens">Screens</a>
+          <a href="/guide/faq">FAQ</a>
+        </nav>
+      </section>
+
+      <slot />
+    </div>
+  </main>
+
+  <Footer />
+</Base>
+
+<style is:global>
+  .guide { padding-bottom: 80px; }
+
+  .guide-hero {
+    padding: 72px 0 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+
+  .guide h1 {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  .guide .lead {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  .guide-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+
+  .guide-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 12px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .guide-links a:hover { color: var(--text); border-color: var(--muted); }
+
+  .guide .section {
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .guide .section:last-child { border-bottom: none; }
+
+  .guide h2 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  .guide h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 28px 0 12px;
+  }
+
+  .guide p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+    max-width: 680px;
+  }
+
+  .guide p:last-child { margin-bottom: 0; }
+
+  .guide strong { color: var(--text); }
+
+  .guide ol, .guide ul {
+    max-width: 680px;
+    margin: 0 0 16px 20px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .guide li { margin-bottom: 8px; }
+
+  .guide .ui {
+    font-weight: 600;
+    color: var(--green);
+  }
+
+  .guide .callout {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 680px;
+    margin-top: 24px;
+  }
+
+  .guide .callout strong { color: var(--text); }
+
+  .guide .guide-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  @media (max-width: 600px) {
+    .guide .guide-grid { grid-template-columns: 1fr; }
+  }
+
+  .guide .guide-card {
+    background: var(--surface);
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: background 0.15s;
+  }
+
+  .guide a.guide-card:hover { background: #222; }
+
+  .guide .guide-card h3 { margin: 0; font-size: 16px; }
+  .guide .guide-card p { font-size: 13px; margin-bottom: 0; }
+</style>

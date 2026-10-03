@@ -1,0 +1,46 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+
+<GuideLayout
+  title="Using The Yips"
+  tag="Guide"
+  description="How to log a round, what each screen tells you, and where to look when something is confusing."
+>
+  <section class="section">
+    <h2>Start here</h2>
+    <div class="guide-grid">
+      <a href="/guide/hole-entry" class="guide-card">
+        <h3>Logging a round</h3>
+        <p>From tapping New round to finishing the 18th. Hole entry is where the data comes from, so it gets the most detail.</p>
+      </a>
+      <a href="/guide/screens" class="guide-card">
+        <h3>The screens</h3>
+        <p>Home, your bag, trends, stats, and Strokes Gained: what each one shows and when it's worth opening.</p>
+      </a>
+      <a href="/stats" class="guide-card">
+        <h3>How stats work</h3>
+        <p>Every number explained: what it means, how it's calculated, and where the baselines come from.</p>
+      </a>
+      <a href="/guide/faq" class="guide-card">
+        <h3>FAQ</h3>
+        <p>Accounts, syncing, GPS, units, and what happens to your data.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>The short version</h2>
+    <ol>
+      <li>Tap <span class="ui">New round</span>, pick your course and tee, and start.</li>
+      <li>On each hole, log your shots (club, lie, how it felt), then your putts and score.</li>
+      <li>Tap <span class="ui">Save &amp; next hole</span>. After the last hole, tap <span class="ui">Finish round</span>.</li>
+      <li>Open <span class="ui">Strokes Gained</span> to see where your strokes actually went.</li>
+    </ol>
+    <p>
+      You don't have to log every shot. A score and putts per hole gets you a
+      scorecard and the classic stats. Shot details (club, lie, distance) are
+      what unlock Strokes Gained, so the more you log, the more it can tell you.
+    </p>
+  </section>
+</GuideLayout>
