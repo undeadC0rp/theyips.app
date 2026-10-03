@@ -1,0 +1,93 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+
+<GuideLayout
+  title="FAQ"
+  tag="Guide"
+  description="Quick answers to the questions that come up most."
+>
+  <section class="section">
+    <h2>Accounts and data</h2>
+
+    <h3>Do I need an account?</h3>
+    <p>
+      No. Choose <strong>Continue without account</strong> and everything works
+      on your phone: unlimited rounds, every stat. An account is for backing
+      up and using your data elsewhere.
+    </p>
+
+    <h3>Where is my data?</h3>
+    <p>
+      On your phone. If you sign in and have The Caddy, your rounds also sync
+      to the cloud for backup. Signing out stops syncing and leaves your rounds
+      on the device.
+    </p>
+
+    <h3>Can I get my data out?</h3>
+    <p>
+      Yes, that's the point. Your data is yours. Use the <a href="/cli" class="ui">CLI</a>
+      or the API to export it, script it, or point your own tools at it.
+    </p>
+
+    <h3>How do I delete my account?</h3>
+    <p>
+      See <a href="/delete-account" class="ui">Delete Account</a>. For what we
+      collect and why, read the <a href="/privacy" class="ui">Privacy Policy</a>.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>Using the app</h2>
+
+    <h3>Do I have to log every shot?</h3>
+    <p>
+      No. A score and putts per hole gives you a scorecard and the classic
+      stats. Logging shots with club, lie, and distance is what unlocks
+      Strokes Gained.
+    </p>
+
+    <h3>Why is a Strokes Gained number missing?</h3>
+    <p>
+      Strokes Gained needs shot details, and putting needs your first-putt
+      distance. If a round is missing them, those categories stay blank rather
+      than guess.
+    </p>
+
+    <h3>How is shot distance measured?</h3>
+    <p>
+      With GPS. Tap <strong>Start GPS tracking</strong> at the ball, walk to
+      where it ended up, and tap <strong>Mark end</strong>. If the signal is
+      weak, wait a moment before marking.
+    </p>
+
+    <h3>What does Good or Bad mean on a shot?</h3>
+    <p>
+      It's about your swing, not the result. Did you hit the shot you meant to?
+      Read more in <a href="/stats" class="ui">how stats work</a>.
+    </p>
+
+    <h3>Can I use meters?</h3>
+    <p>There's a units option in Settings.</p>
+
+    <h3>I stopped halfway through a round. Is it lost?</h3>
+    <p>
+      No. A round in progress stays on the Rounds screen with a shortcut to
+      resume it, even if you close the app.
+    </p>
+
+    <h3>I signed out by mistake. Did I lose anything?</h3>
+    <p>
+      No. Your rounds stay on your phone. The app asks you to confirm before
+      signing out, so it's harder to do by accident.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>Still stuck?</h2>
+    <p>
+      Send feedback from <strong>Settings</strong> in the app. Tell us what you
+      expected and what happened. It helps more than you'd think.
+    </p>
+  </section>
+</GuideLayout>
