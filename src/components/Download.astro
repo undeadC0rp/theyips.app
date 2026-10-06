@@ -1,30 +1,21 @@
 ---
-const BETA_URL = 'https://play.google.com/store/apps/details?id=app.theyips';
-const GROUP_URL = 'https://groups.google.com/g/theyipsapp';
-const APK_URL = 'https://github.com/undeadC0rp/theyipsapp-releases/releases/latest';
+const PLAY_URL = 'https://play.google.com/store/apps/details?id=app.theyips';
 ---
 
 <section class="download">
   <div class="container inner">
     <div class="copy">
       <h2>Start logging<br /><em>real rounds.</em></h2>
-      <p>Free beta. Sign in with Google. Your data comes with you.</p>
+      <p>Free to start. Your data comes with you.</p>
     </div>
     <div class="actions">
-      <a href={GROUP_URL} class="btn-primary" target="_blank" rel="noopener">
+      <a href={PLAY_URL} class="btn-primary" target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M5 12l5 5L20 7"/>
         </svg>
-        Join the Google Group
+        Get it on Google Play
       </a>
-      <p class="step-note">Required first: Play beta access is gated to group members.</p>
-      <a href={BETA_URL} class="btn-secondary" target="_blank" rel="noopener">
-        Then get it on Google Play →
-      </a>
-      <p class="note">Android only · expect rough edges · feedback welcome</p>
-      <p class="store-note">
-        Prefer to sideload? <a href={APK_URL} target="_blank" rel="noopener" class="how-link">Download APK</a>
-      </p>
+      <p class="note">Android only · feedback welcome</p>
     </div>
   </div>
 </section>
@@ -73,25 +64,5 @@ const APK_URL = 'https://github.com/undeadC0rp/theyipsapp-releases/releases/late
 
   .btn-primary:hover { opacity: 0.88; }
 
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--green);
-    border: 1px solid var(--green);
-    padding: 11px 22px;
-    border-radius: 8px;
-    transition: opacity 0.15s;
-  }
-
-  .btn-secondary:hover { opacity: 0.8; }
-
-  .step-note { font-size: 12px; color: var(--muted); font-weight: 600; }
-
   .note { font-size: 12px; color: var(--muted2); }
-  .how-link { color: var(--green); text-decoration: underline; }
-
-  .store-note { font-size: 12px; color: var(--muted2); }
 </style>
