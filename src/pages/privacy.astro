@@ -7,15 +7,15 @@ import Base from '../layouts/Base.astro';
     <a href="/" style="color: #4ADE80; text-decoration: none; font-size: 0.9rem;">← Back to The Yips</a>
 
     <h1 style="margin-top: 2rem; color: #ffffff; font-size: 2rem;">Privacy Policy</h1>
-    <p style="color: #9ca3af; font-size: 0.9rem;">Effective date: October 2, 2026</p>
+    <p style="color: #9ca3af; font-size: 0.9rem;">Effective date: October 6, 2026</p>
 
     <p>The Yips is a golf stats tracker built for golfers who want to understand and improve their game. This policy explains what data the app collects, how it's used, and your rights around it.</p>
 
     <h2 style="color: #ffffff; margin-top: 2rem;">What We Collect</h2>
     <ul>
-      <li><strong>Account information</strong>: your name and email address when you sign in with Google or Apple.</li>
+      <li><strong>Account information</strong>: your name and email address when you sign in with Google.</li>
       <li><strong>Golf data</strong>: rounds, scores, hole-by-hole stats, shot distances, club selections, and course information you enter or record in the app.</li>
-      <li><strong>Location data</strong>: GPS coordinates captured during a round to measure shot distances and record green locations. Location is only accessed when you actively use shot-tracking features.</li>
+      <li><strong>Location data</strong>: GPS coordinates captured during a round to measure shot distances. When you start a round, your phone's location is also used to find nearby courses and, for courses we have no coordinates for, to look up the weather. Location is only accessed when you start a round or use shot tracking.</li>
       <li><strong>Device information</strong>: basic device identifiers used for authentication and app functionality.</li>
       <li><strong>Usage and diagnostics</strong>: anonymous usage events (for example: a round was started or completed, the subscription screen was viewed), crash and error reports, the app version, and when you last used the app. When a round is started, the event includes the name of the golf course you selected from our course directory, so we can make sure it has accurate green maps. These are tied to a random per-install identifier, not to your name or email, and never include your scores, shots, or GPS coordinates.</li>
     </ul>
@@ -33,8 +33,8 @@ import Base from '../layouts/Base.astro';
     <h2 style="color: #ffffff; margin-top: 2rem;">Third-Party Services</h2>
     <ul>
       <li><strong>Google Sign-In</strong>: used for authentication. Subject to <a href="https://policies.google.com/privacy" style="color: #4ADE80;">Google's Privacy Policy</a>.</li>
-      <li><strong>Apple Sign-In</strong>: used for authentication on iOS. Subject to <a href="https://www.apple.com/legal/privacy/" style="color: #4ADE80;">Apple's Privacy Policy</a>.</li>
       <li><strong>PostHog</strong>: anonymous product analytics, processed in the United States. Subject to <a href="https://posthog.com/privacy" style="color: #4ADE80;">PostHog's Privacy Policy</a>.</li>
+      <li><strong>Open-Meteo</strong>: weather lookup when you start a round. The request carries coordinates rounded to about 1 km, either the course's or, if we have none for the course, your phone's, plus your IP address as with any web request. Subject to <a href="https://open-meteo.com/en/terms" style="color: #4ADE80;">Open-Meteo's terms and privacy policy</a>.</li>
       <li><strong>Sentry</strong>: crash and error reporting. Subject to <a href="https://sentry.io/privacy/" style="color: #4ADE80;">Sentry's Privacy Policy</a>.</li>
     </ul>
 
