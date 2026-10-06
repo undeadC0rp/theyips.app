@@ -23,6 +23,18 @@ html {
   background: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+/* Keep anchored sections clear of the sticky nav (two rows on phones). */
+section[id] { scroll-margin-top: 64px; }
+
+@media (max-width: 720px) {
+  section[id] { scroll-margin-top: 104px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
 
 body { min-height: 100vh; }
