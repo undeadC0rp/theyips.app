@@ -1,0 +1,145 @@
+---
+// Answers go in as HTML so they can carry links; the FAQ structured data is
+// built from the same list with the tags stripped, so the two cannot drift.
+const faqs = [
+  {
+    q: 'What does it do that my scorecard app doesn\'t?',
+    a: 'A scorecard tells you what you shot. The Yips shows which part of your game is costing you strokes (off the tee, approach, short game or putting) and how far you really hit each club.',
+  },
+  {
+    q: 'Is it free?',
+    a: 'Yes. Logging rounds and seeing your stats on your phone is free, no catch. An optional subscription, The Caddy, adds cloud backup, API access and club suggestions (still a work in progress). Skip it forever and you keep every stat.',
+  },
+  {
+    q: 'Does it work on iPhone?',
+    a: 'Not yet. The Yips is Android only today. An iPhone version is in the planning stages.',
+  },
+  {
+    q: 'Does it work with my watch or rangefinder?',
+    a: 'Not yet. There is no watch or rangefinder support today, though a watch app is in the works.',
+  },
+  {
+    q: 'How much battery does it use?',
+    a: 'In our testing on a Pixel 7a and a Pixel 10a, 18 holes with GPS tracking used about 25 to 30 percent of the battery. That is a lot lighter than the other phone GPS apps we have tried. Your phone and your habits will vary.',
+  },
+  {
+    q: 'Do I need a signal on the course?',
+    a: 'Your rounds live on your phone, so a dead zone on the back nine will not lose anything. Starting a round (finding your course and the weather) and syncing do need a connection.',
+  },
+  {
+    q: 'Does it track my location all day?',
+    a: 'No. Location is used when you start a round, to find nearby courses and the weather, and while you use GPS shot tracking. We do not sell it or use it for ads. The details are in the <a href="/privacy">privacy policy</a>.',
+  },
+  {
+    q: 'Which courses does it cover?',
+    a: 'We are aiming to cover the US and Canada with GPS first, and the rest of the world eventually. Can\'t find yours? Search by name, and tell us which one is missing from Settings in the app.',
+  },
+  {
+    q: 'Why is the distance to the green missing?',
+    a: 'Green GPS is spotty for now, and it is something we fill in on our end, so there is nothing for you to do. If your course does not have it on your first round, it should by a later one. Keep logging as normal.',
+  },
+  {
+    q: 'Is that my official handicap?',
+    a: 'Nope. The app shows a handicap differential for each round, worked out from the course rating and slope. It is not an official index, and we would like to link to your real one down the road.',
+  },
+  {
+    q: 'Can I get my data out?',
+    a: 'Yes, that is the point. Use the <a href="/cli">CLI</a> or the API (included with The Caddy) to export it, script it, or point your own tools at it.',
+  },
+  {
+    q: 'Will you add satellite views?',
+    a: 'It is planned, depending on demand. If you want it, tell us from Settings in the app. It helps us decide.',
+  },
+];
+
+const stripTags = (html: string) => html.replace(/<[^>]+>/g, '');
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: stripTags(f.a) },
+  })),
+};
+---
+
+<section class="faq" id="faq">
+  <div class="container">
+    <p class="tag">FAQ</p>
+    <h2>Questions you<br /><em>probably have.</em></h2>
+    <div class="list">
+      {faqs.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p set:html={f.a} />
+        </details>
+      ))}
+    </div>
+    <p class="more">
+      More in the <a href="/guide/faq">guide FAQ</a>.
+    </p>
+  </div>
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+</section>
+
+<style>
+  .faq {
+    padding: 80px 0;
+    border-top: 1px solid var(--border);
+    scroll-margin-top: 56px;
+  }
+
+  h2 {
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+  }
+
+  h2 em { color: var(--green); font-style: normal; }
+
+  .list { max-width: 760px; border-top: 1px solid var(--border); }
+
+  details { border-bottom: 1px solid var(--border); }
+
+  summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker { display: none; }
+
+  summary::after {
+    content: '+';
+    flex-shrink: 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--green);
+  }
+
+  details[open] summary::after { content: '\2212'; }
+
+  summary:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+
+  details p {
+    padding: 0 32px 20px 0;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  details p :global(a),
+  .more a { color: var(--green); text-decoration: underline; }
+
+  .more { margin-top: 24px; font-size: 13.5px; color: var(--muted); }
+</style>
