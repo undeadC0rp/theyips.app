@@ -1,0 +1,280 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+// Public, high-level release notes for the app and the CLI. Newest first.
+// Keep each entry to a sentence or two of plain golfer-facing language — no
+// version-code / schema / PR detail. Add a new entry here whenever either
+// product ships a release worth telling golfers about (see CLAUDE.md).
+type Product = 'app' | 'cli';
+interface Release {
+  product: Product;
+  version: string;
+  date: string; // display label, e.g. "October 2026"
+  title: string;
+  body: string;
+}
+
+const releases: Release[] = [
+  {
+    product: 'cli',
+    version: 'v0.26',
+    date: 'October 2026',
+    title: 'Elevation, in the terminal',
+    body:
+      "yips hole now shows how much each shot climbed or dropped, and what it would have measured on flat ground. A 235-yard drive down a 61-foot drop reads 235yds [215yds] — so a hill-aided bomb stops flattering the club.",
+  },
+  {
+    product: 'app',
+    version: 'v0.26',
+    date: 'October 2026',
+    title: 'The Course History caddy',
+    body:
+      "A new Virtual Caddy mode that picks your tee club from what you've actually done on each hole, not just the yardage. Keep scoring with the 7-iron on that stubby par 4 and it rises to the top; keep blowing it with the driver there and it quietly stops suggesting it. Choose it in Settings under the caddy engine.",
+  },
+  {
+    product: 'app',
+    version: 'v0.25',
+    date: 'October 2026',
+    title: 'Every shot learns its hill',
+    body:
+      "The app now records the elevation change of each shot using your phone's barometer, so your distances can be read honestly — uphill shots that played longer, downhill shots that got a kick. The numbers show up in the CLI today, with more on the way.",
+  },
+  {
+    product: 'app',
+    version: 'v0.23',
+    date: 'October 2026',
+    title: 'Recovery shots, scored fairly',
+    body:
+      'Punch-outs and recoveries are now their own shot type. They score against a proper recovery benchmark instead of being judged like a normal shot, and a 5-iron you deliberately chopped 80 yards no longer drags down that club’s average distance.',
+  },
+  {
+    product: 'cli',
+    version: 'v0.25',
+    date: 'October 2026',
+    title: 'Recovery-aware stats',
+    body:
+      'yips stats and yips clubs now match the app: recovery shots are scored on their own baseline and kept out of your club-distance averages, so your numbers reflect the shots you actually meant to hit.',
+  },
+  {
+    product: 'app',
+    version: 'v0.21',
+    date: 'October 2026',
+    title: 'Approach: strengths and leaks',
+    body:
+      'The Approach screen now highlights where you gain and lose the most on the way to the green, and leaves the driver out of approach stats so your iron play is judged on its own.',
+  },
+  {
+    product: 'cli',
+    version: 'v0.23',
+    date: 'October 2026',
+    title: 'GIR by distance: yips gir',
+    body:
+      'A new command that breaks your greens-in-regulation rate down by how far out your approach was — so you can see exactly where the green starts slipping away.',
+  },
+  {
+    product: 'app',
+    version: 'v0.19',
+    date: 'October 2026',
+    title: 'Shot commitment',
+    body:
+      'Tag a shot Good or Bad on intent, separate from how it turned out, on both Approach and Off the Tee. See your committed rate and what committing actually buys you in fairways and greens — and filter any chart by it.',
+  },
+  {
+    product: 'app',
+    version: 'v0.17',
+    date: 'October 2026',
+    title: 'The Approach screen, rebuilt',
+    body:
+      'A rebuilt Trends section centered on the regulation approach: GIR versus scramble by distance, club and lie, where your misses land, and ball and putter selectors across the board.',
+  },
+  {
+    product: 'cli',
+    version: 'v0.16',
+    date: 'July 2026',
+    title: 'Per-shot strokes gained: yips shots',
+    body:
+      'yips shots audits every shot in a round and shows where strokes were won and lost — the same strokes-gained model as the app, now pipeable into a spreadsheet or an AI.',
+  },
+];
+
+const label = { app: 'App', cli: 'CLI' };
+---
+
+<Base
+  title="Releases | The Yips"
+  description="What's new in The Yips golf stats app and the yips CLI — plain-English release notes for every update worth knowing about."
+>
+  <Nav />
+
+  <main>
+    <div class="container">
+
+      <!-- Hero -->
+      <section class="hero">
+        <p class="tag">Releases</p>
+        <h1>What's new,<br /><em>in plain English.</em></h1>
+        <p class="lead">
+          The stuff we've shipped to the app and the CLI, newest first. No
+          changelog jargon — just what changed and why it helps you suck less.
+        </p>
+      </section>
+
+      <!-- Timeline -->
+      <section class="section">
+        <ol class="timeline">
+          {releases.map((r) => (
+            <li class="release">
+              <div class="release-head">
+                <span class={`rel-badge badge-${r.product}`}>{label[r.product]}</span>
+                <span class="rel-ver">{r.version}</span>
+                <span class="rel-date">{r.date}</span>
+              </div>
+              <h3>{r.title}</h3>
+              <p>{r.body}</p>
+            </li>
+          ))}
+        </ol>
+
+        <p class="footnote">
+          Want the fine print? The app updates land on
+          <a class="inline-link" href="https://play.google.com/store/apps/details?id=app.theyips" target="_blank" rel="noopener">Google Play</a>,
+          and every CLI build is on the
+          <a class="inline-link" href="https://github.com/undeadC0rp/theyips/releases/latest" target="_blank" rel="noopener">releases page</a>.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  main { padding-bottom: 80px; }
+
+  .hero {
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 64px;
+  }
+
+  h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  h1 em { color: var(--green); font-style: normal; }
+
+  .lead {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  .section {
+    margin-bottom: 64px;
+  }
+
+  /* Timeline */
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .release {
+    padding: 0 0 32px 24px;
+    margin-bottom: 32px;
+    border-left: 2px solid var(--border);
+    position: relative;
+  }
+
+  .release:last-of-type { border-left-color: transparent; padding-bottom: 8px; }
+
+  .release::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--green);
+    border: 3px solid var(--bg);
+  }
+
+  .release-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  .rel-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
+  .badge-app {
+    color: var(--green);
+    background: var(--surface);
+    border-color: var(--green);
+  }
+
+  .badge-cli {
+    color: var(--muted);
+    background: var(--surface2);
+  }
+
+  .rel-ver {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .rel-date {
+    font-size: 12px;
+    color: var(--muted2);
+  }
+
+  h3 {
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0 0 8px;
+    color: var(--text);
+  }
+
+  p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin: 0;
+    max-width: 640px;
+  }
+
+  .footnote {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--muted2);
+    max-width: 640px;
+  }
+
+  .inline-link { color: var(--green); text-decoration: underline; text-underline-offset: 2px; }
+  .inline-link:hover { opacity: 0.8; }
+</style>
