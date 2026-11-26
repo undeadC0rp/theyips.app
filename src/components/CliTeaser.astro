@@ -1,0 +1,123 @@
+---
+// Small teaser for the CLI on the homepage. Links to the full /cli page.
+---
+
+<section class="cli-teaser" id="cli">
+  <div class="container inner">
+    <div class="copy">
+      <p class="tag">Command line</p>
+      <h2>Your stats,<br /><em>in the terminal.</em></h2>
+      <p>
+        Prefer the shell? The yips CLI pulls your rounds, strokes gained, and
+        club numbers straight to your terminal. Pipe them into a spreadsheet, a
+        script, or an AI.
+      </p>
+      <a href="/cli" class="btn-cli">Explore the CLI &rarr;</a>
+    </div>
+
+    <div class="term" aria-hidden="true">
+      <div class="term-bar"><span></span><span></span><span></span></div>
+      <pre><code><span class="p">$</span> yips rounds        <span class="c"># list your rounds</span>
+<span class="p">$</span> yips stats         <span class="c"># stats across all rounds</span>
+<span class="p">$</span> yips shots         <span class="c"># per-shot strokes gained</span>
+<span class="p">$</span> yips clubs --json  <span class="c"># pipe it anywhere</span></code></pre>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cli-teaser {
+    padding: 72px 0;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  @media (max-width: 820px) {
+    .inner { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  .tag {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 14px;
+  }
+
+  h2 {
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  h2 em { color: var(--green); font-style: normal; }
+
+  .copy p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 420px;
+    margin-bottom: 28px;
+  }
+
+  .btn-cli {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--bg);
+    background: var(--green);
+    padding: 12px 22px;
+    border-radius: 8px;
+    transition: opacity 0.15s;
+  }
+
+  .btn-cli:hover { opacity: 0.88; }
+
+  /* Terminal panel */
+  .term {
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  }
+
+  .term-bar {
+    display: flex;
+    gap: 7px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .term-bar span {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #333;
+  }
+
+  .term pre {
+    margin: 0;
+    padding: 18px 20px;
+    overflow-x: auto;
+    font-family: 'Courier New', 'Menlo', 'Monaco', monospace;
+    font-size: 13px;
+    line-height: 1.9;
+    color: #e2e8f0;
+    white-space: pre;
+  }
+
+  .term .p { color: var(--green); }
+  .term .c { color: #64748b; }
+</style>

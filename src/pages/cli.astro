@@ -117,6 +117,7 @@ PAR  HOLES  AVG SCORE
             <span class="cmd-name">yips stats &lt;id&gt;</span>
             <span class="cmd-desc">Full breakdown for a single round</span>
           </div>
+          <p class="cmd-note"><code class="inline">yips round-stats &lt;id&gt;</code> gives the same single-round breakdown.</p>
           <pre class="terminal output"><code>Pine Valley GC  ·  2024-11-03
 SG benchmark: tour_pro (putting: scratch)
 
@@ -136,6 +137,46 @@ Birdie   2
 Par      8
 Bogey    6
 Double   2</code></pre>
+        </div>
+
+        <!-- shots -->
+        <div class="cmd-block">
+          <div class="cmd-header">
+            <span class="cmd-name">yips shots [id]</span>
+            <span class="cmd-desc">Per-shot strokes gained, with your good/bad tags</span>
+          </div>
+          <p class="cmd-note">No id gives a cross-round breakdown. Add an id for one round, <code class="inline">--hole &lt;n&gt;</code> for a single hole, <code class="inline">--by lie</code> to group by lie instead of category, or <code class="inline">--json</code> to pipe it.</p>
+          <pre class="terminal output"><code>Shots by category  ·  2 rounds
+SG benchmark: full=tour_pro  putt=tour_pro
+
+GROUP  SHOTS  RATED  GOOD%  SG TOTAL  SG/SHOT
+OTT    2      1      100%   -0.27     -0.135
+APP    1      0      -      +0.94     +0.940
+ARG    1      0      -      +0.16     +0.160
+PUTT   4      0      -      -0.76     -0.190
+TOTAL  8      1      100%   +0.07     +0.009
+
+GOOD% is your recorded shot-quality tag; SG is strokes gained vs the benchmark.</code></pre>
+        </div>
+
+        <!-- gir -->
+        <div class="cmd-block">
+          <div class="cmd-header">
+            <span class="cmd-name">yips gir</span>
+            <span class="cmd-desc">GIR hit-rate by approach distance</span>
+          </div>
+          <p class="cmd-note">Shows the distance bands where you lose the most greens. Add <code class="inline">--estimate</code> to fill GPS gaps from your club averages, or <code class="inline">--json</code> to pipe it.</p>
+          <pre class="terminal output"><code>GIR by regulation-approach distance  ·  12 rounds
+
+DIST         ATT  GIR  GIR%  MISSED
+75-100 yds   14   9    64%   5
+100-125 yds  22   11   50%   11
+125-150 yds  26   9    35%   17
+150-175 yds  19   5    26%   14
+175-200 yds  11   2    18%   9
+TOTAL        92   36   39%   56
+
+Biggest drag: 125-150 yds, 17 of 26 approaches missed the green (35% GIR).</code></pre>
         </div>
 
         <!-- clubs -->
@@ -206,6 +247,14 @@ Hole 3  Par 5  Index 9  520yds  Score: 8 (+3)
           <pre class="terminal"><code>yips notes --json | claude "what patterns do you see in my double bogeys or worse? what should I focus on?"</code></pre>
         </div>
 
+        <!-- version -->
+        <div class="cmd-block">
+          <div class="cmd-header">
+            <span class="cmd-name">yips version</span>
+            <span class="cmd-desc">Print the installed CLI version</span>
+          </div>
+        </div>
+
       </section>
 
       <!-- Flags -->
@@ -219,18 +268,28 @@ Hole 3  Par 5  Index 9  520yds  Score: 8 (+3)
             <tbody>
               <tr>
                 <td><code>--profile &lt;slug&gt;</code></td>
-                <td><code>round</code>, <code>stats</code>, <code>clubs</code></td>
+                <td><code>round</code>, <code>round-stats</code>, <code>shots</code>, <code>gir</code>, <code>stats</code>, <code>clubs</code></td>
                 <td>SG benchmark profile. Valid slugs: <code>tour_pro</code>, <code>scratch</code>, <code>hcp_5</code>, <code>hcp_10</code>, <code>hcp_15</code>, <code>hcp_20</code>, <code>hcp_25</code>. Default: <code>tour_pro</code>.</td>
               </tr>
               <tr>
                 <td><code>--estimate</code></td>
-                <td><code>round</code>, <code>stats</code></td>
+                <td><code>round</code>, <code>round-stats</code>, <code>shots</code>, <code>gir</code>, <code>stats</code></td>
                 <td>Fill GPS-missing distances from hole yardage and club averages so partial holes still show a split. Estimated cells are marked with <code>~</code>.</td>
               </tr>
               <tr>
                 <td><code>--json</code></td>
-                <td><code>notes</code>, <code>clubs</code>, <code>holes</code></td>
+                <td><code>shots</code>, <code>gir</code>, <code>notes</code>, <code>clubs</code>, <code>holes</code></td>
                 <td>Emit raw JSON for piping into other tools.</td>
+              </tr>
+              <tr>
+                <td><code>--hole &lt;n&gt;</code></td>
+                <td><code>shots</code></td>
+                <td>Limit the per-shot audit to a single hole number.</td>
+              </tr>
+              <tr>
+                <td><code>--by &lt;group&gt;</code></td>
+                <td><code>shots</code></td>
+                <td>Group the shots audit by <code>category</code> (default) or <code>lie</code>.</td>
               </tr>
               <tr>
                 <td><code>--course &lt;name&gt;</code></td>
