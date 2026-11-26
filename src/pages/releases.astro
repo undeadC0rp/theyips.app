@@ -4,7 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
 // Public, high-level release notes for the app and the CLI. Newest first.
-// Keep each entry to a sentence or two of plain golfer-facing language — no
+// Keep each entry to a sentence or two of plain golfer-facing language, no
 // version-code / schema / PR detail. Add a new entry here whenever either
 // product ships a release worth telling golfers about (see CLAUDE.md).
 type Product = 'app' | 'cli';
@@ -23,7 +23,7 @@ const releases: Release[] = [
     date: 'November 2026',
     title: 'A steadier sign-in',
     body:
-      "Signing in with Google now runs through a more reliable path, so “Continue with Google” gets you straight into your rounds instead of occasionally hanging. Nothing to do on your end — just sign in as usual, and your rounds are right where you left them.",
+      "Signing in with Google now runs through a more reliable path, so “Continue with Google” gets you straight into your rounds instead of occasionally hanging. Nothing to do on your end. Just sign in as usual, and your rounds are right where you left them.",
   },
   {
     product: 'cli',
@@ -31,7 +31,7 @@ const releases: Release[] = [
     date: 'November 2026',
     title: 'A new way to sign in',
     body:
-      "The yips CLI now signs you in through your browser: run the login command, approve the short code it shows you, and you’re linked to your account. You’ll sign in once with the new flow — your stats are exactly where you left them.",
+      "The yips CLI now signs you in through your browser: run the login command, approve the short code it shows you, and you’re linked to your account. You’ll sign in once with the new flow. Your stats are exactly where you left them.",
   },
   {
     product: 'cli',
@@ -39,7 +39,7 @@ const releases: Release[] = [
     date: 'October 2026',
     title: 'Elevation, in the terminal',
     body:
-      "yips hole now shows how much each shot climbed or dropped, and what it would have measured on flat ground. A 235-yard drive down a 61-foot drop reads 235yds [215yds] — so a hill-aided bomb stops flattering the club.",
+      "yips hole now shows how much each shot climbed or dropped, and what it would have measured on flat ground. A 235-yard drive down a 61-foot drop reads 235yds [215yds], so a hill-aided bomb stops flattering the club.",
   },
   {
     product: 'app',
@@ -55,7 +55,7 @@ const releases: Release[] = [
     date: 'October 2026',
     title: 'Every shot learns its hill',
     body:
-      "The app now records the elevation change of each shot using your phone's barometer, so your distances can be read honestly — uphill shots that played longer, downhill shots that got a kick. The numbers show up in the CLI today, with more on the way.",
+      "The app now records the elevation change of each shot using your phone's barometer, so your distances can be read honestly: uphill shots that played longer, downhill shots that got a kick. The numbers show up in the CLI today, with more on the way.",
   },
   {
     product: 'app',
@@ -87,7 +87,7 @@ const releases: Release[] = [
     date: 'October 2026',
     title: 'GIR by distance: yips gir',
     body:
-      'A new command that breaks your greens-in-regulation rate down by how far out your approach was — so you can see exactly where the green starts slipping away.',
+      'A new command that breaks your greens-in-regulation rate down by how far out your approach was, so you can see exactly where the green starts slipping away.',
   },
   {
     product: 'app',
@@ -95,7 +95,7 @@ const releases: Release[] = [
     date: 'October 2026',
     title: 'Shot commitment',
     body:
-      'Tag a shot Good or Bad on intent, separate from how it turned out, on both Approach and Off the Tee. See your committed rate and what committing actually buys you in fairways and greens — and filter any chart by it.',
+      'Tag a shot Good or Bad on intent, separate from how it turned out, on both Approach and Off the Tee. See your committed rate and what committing actually buys you in fairways and greens, and filter any chart by it.',
   },
   {
     product: 'app',
@@ -111,7 +111,7 @@ const releases: Release[] = [
     date: 'July 2026',
     title: 'Per-shot strokes gained: yips shots',
     body:
-      'yips shots audits every shot in a round and shows where strokes were won and lost — the same strokes-gained model as the app, now pipeable into a spreadsheet or an AI.',
+      'yips shots audits every shot in a round and shows where strokes were won and lost. It uses the same strokes-gained model as the app, now pipeable into a spreadsheet or an AI.',
   },
 ];
 
@@ -120,7 +120,7 @@ const label = { app: 'App', cli: 'CLI' };
 
 <Base
   title="Releases | The Yips"
-  description="What's new in The Yips golf stats app and the yips CLI — plain-English release notes for every update worth knowing about."
+  description="What's new in The Yips golf stats app and the yips CLI. Plain-English release notes for every update worth knowing about."
 >
   <Nav />
 
@@ -133,7 +133,7 @@ const label = { app: 'App', cli: 'CLI' };
         <h1>What's new,<br /><em>in plain English.</em></h1>
         <p class="lead">
           The stuff we've shipped to the app and the CLI, newest first. No
-          changelog jargon — just what changed and why it helps you suck less.
+          changelog jargon, just what changed and why it helps you suck less.
         </p>
       </section>
 

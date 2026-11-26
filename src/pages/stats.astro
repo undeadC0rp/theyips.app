@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 
 <Base
   title="How Stats Work | The Yips"
-  description="Every stat The Yips tracks, explained. Strokes gained, GIR, fairway hit, shot quality, club distances, and how our baselines are built."
+  description="Every stat The Yips tracks, explained. Strokes gained, GIR, fairway hit, shot quality, club distances, elevation, and how our baselines are built."
 >
   <Nav />
 
@@ -167,6 +167,29 @@ import Footer from '../components/Footer.astro';
         <p>
           Distances are recorded by GPS when available. The app captures the start and end
           coordinates of each shot. Manually entered distances are used when GPS isn't available.
+        </p>
+      </section>
+
+      <!-- Elevation -->
+      <section class="section">
+        <h2>Elevation</h2>
+        <p>
+          A 150-yard shot doesn't play like 150 yards when the green sits well
+          above or below you. The Yips records the elevation change of every shot
+          using your phone's barometer, so the raw GPS yardage comes with the
+          context that makes it honest: how far the ball rose or fell between
+          where you stood and where it came to rest.
+        </p>
+        <p>
+          Uphill shots play longer than the rangefinder number; downhill shots get
+          a kick and play shorter. Tracking that rise and fall per shot keeps your
+          club distances true to what actually happened, instead of blending an
+          uphill hole and a downhill one into the same misleading average.
+        </p>
+        <p>
+          Elevation is captured automatically on every GPS-tracked shot, so
+          there's nothing to tag. The numbers show up in the CLI today, with more
+          ways to read them coming to the app.
         </p>
       </section>
 
